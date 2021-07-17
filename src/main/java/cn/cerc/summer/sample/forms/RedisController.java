@@ -70,11 +70,19 @@ public class RedisController {
         }
     }
 
-    @PostMapping("rpop/")
+    @PostMapping("rpop")
     public String rpop(String key) {
         try (Jedis redis = JedisFactory.getJedis()) {
             return redis.rpop(key);
         }
+    }
+
+    @PostMapping("book")
+    public Book book() {
+        Book book = new Book();
+        book.setCode("1024");
+        book.setName("Java Core Ⅰ");
+        return book;
     }
 
 }
